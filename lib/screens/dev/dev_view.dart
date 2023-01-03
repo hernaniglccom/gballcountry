@@ -23,8 +23,9 @@ class _DevViewState extends State<DevView> {
     final double fontSizeText = pow(size.height, 1 / 2) / 1.75;
     final double padding = pow(size.width, 1 / 4) * 1.5;
     final invoices = Provider.of<List<InvoiceInformation>>(context);
+    bool view = true;
 
-    return SingleChildScrollView(
+    return view ? const SizedBox.shrink() : SingleChildScrollView(
       child:Padding(
         padding: EdgeInsets.all(horizontalPadding),
         child: Column(

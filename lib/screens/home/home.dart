@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gballcountry/private_classes/fulfilled_order.dart';
 import 'package:gballcountry/screens/dev/dev_view.dart';
 import 'package:gballcountry/screens/processes/register_sale/register_sale.dart';
-import 'package:gballcountry/screens/processes/view_stock/rack_list2.dart';
+import 'package:gballcountry/screens/processes/view_stock/rack_list.dart';
 import 'package:gballcountry/services/dbaseFulfilledOrders.dart';
 import 'package:gballcountry/shared/weight_table.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +17,6 @@ import 'package:gballcountry/screens/user_cart.dart';
 import 'package:gballcountry/screens/home/users/user_list.dart';
 import 'package:gballcountry/screens/processes/add_invoice/add_invoice2.dart';
 import 'package:gballcountry/screens/processes/receive/invoice_list.dart';
-import 'package:gballcountry/screens/processes/view_stock/rack_list.dart';
 import 'package:gballcountry/screens/processes/view_stock/blueprint_view.dart';
 import 'package:gballcountry/screens/processes/view_stock/stock_summary.dart';
 
@@ -267,7 +266,10 @@ class _HomeState extends State<Home> {
                                         Icons.code, color: Colors.white70),
                                   ),
                                   onTap: () {
-                                    setState(() => viewDev = !viewDev);
+                                    setState(() {
+                                      allViewsFalse();
+                                      viewDev = !viewDev;
+                                    });
                                   }
                               ),
                             ) : const SizedBox.shrink(),
@@ -292,7 +294,7 @@ class _HomeState extends State<Home> {
                       viewCase2 ? const Loading() :
                       viewCase3 ? const BlueprintView() :
                       viewCase4 ? const Loading() :
-                      viewCase5 ? const RackList2() :
+                      viewCase5 ? const RackList() :
                       viewCase6 ? const UserList() :
                       viewCase7 ? const StockSummary() :
                       viewCase8 ? RegisterSale(user: user,
